@@ -20,12 +20,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, addTask, updateTask }) => {
       addTask(task);
     }
     
+    setId(undefined);
     setTitle("");
     setDescription("");
     setCompleted(false);
     setStatus("todo");
   };
-
+  const [id, setId] = useState<number | undefined>(task?.id || undefined);
   const [title, setTitle] = useState<string>(task?.title || "");
   const [description, setDescription] = useState<string>(
     task?.description || ""
@@ -34,6 +35,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, addTask, updateTask }) => {
   const [status, setStatus] = useState<string>(task?.status || "todo");
 
   useEffect(() => {
+    setId(task?.id || undefined);
     setTitle(task?.title || "");
     setDescription(task?.description || "");
     setCompleted(task?.completed || false);
@@ -42,7 +44,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, addTask, updateTask }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="hidden" name="id" value={task?.id || ""} />
+      <input type="hidden" name="id" value={id} />
       <div className="mb-3">
         <label className="form-label" htmlFor="title">
           Title
