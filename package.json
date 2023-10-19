@@ -1,0 +1,14 @@
+{
+  "name": "bachelor-todo-nodejs-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:frontend & npm run start:backend",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
