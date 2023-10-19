@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Finish homework",
+        "completed": false,
+        "description": "Complete all the pending homework assignments"
+    },
+    {
+        "id": 2,
+        "title": "Buy groceries",
+        "completed": false,
+        "description": "Purchase all the necessary groceries for the week"
+    },
+    {
+        "id": 3,
+        "title": "Clean the house",
+        "completed": true,
+        "description": "Thoroughly clean the entire house"
+    },
+    {
+        "id": 4,
+        "title": "Go for a run",
+        "completed": false,
+        "description": "Run for at least 30 minutes in the park"
+    }
+]
