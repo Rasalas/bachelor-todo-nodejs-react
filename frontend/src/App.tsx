@@ -15,7 +15,6 @@ const App: React.FC = () => {
 
     setTasks((prevTasks) =>
       prevTasks.map((task) => {
-        console.log("Checking task", task.id, updatedTaskId); // Zum Debuggen hinzugefügt
         return task.id === updatedTaskId ? updatedTask : task;
       })
     );
