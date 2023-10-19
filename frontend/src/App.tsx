@@ -8,6 +8,10 @@ import TaskForm from "./components/TaskForm";
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksFromJSON);
   const addTask = (newTask: Task) => {
+    newTask.id = Date.now();
+    if (!newTask.title) {
+      return;
+    }
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
   const updateTask = (updatedTask: Task) => {
