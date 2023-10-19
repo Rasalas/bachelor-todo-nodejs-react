@@ -1,17 +1,16 @@
-import React from 'react';
+import React from "react";
 
 interface TaskProps {
-    id: number;
-    task: string;
-    completed: boolean;
+  task: Task;
+  onSelectTask: (task: Task) => void;
 }
 
-const TaskEntry: React.FC<TaskProps> = ({id, task, completed}) => {
-    return (
-        <li>
-            {completed ? "✅" : "❌"} {task}
-        </li>
-    );
-}
+const TaskEntry: React.FC<TaskProps> = ({ task, onSelectTask }) => {
+  return (
+    <li key={task.id} onClick={() => onSelectTask(task)}>
+      {task.completed ? "✅" : "❌"} {task.title}
+    </li>
+  );
+};
 
 export default TaskEntry;

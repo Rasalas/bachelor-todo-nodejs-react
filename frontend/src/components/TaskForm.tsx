@@ -1,36 +1,73 @@
-import React from "react";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  completed: boolean;
-}
+import React, { useState, useEffect } from "react";
 
 interface TaskFormProps {
-  task?: Task;
+  task?: Task | null;
+  addTask: (task: Task) => void;
+  updateTask: (task: Task) => void;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ task, addTask, updateTask }) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const task = Object.fromEntries(formData.entries()) as unknown as Task;
+    if (task.id) {
+      task.id = Number(task.id);
+      updateTask(task);
+    } else {
+      task.id = task.id || Date.now();
+      addTask(task);
+    }
+    
+    setTitle("");
+    setDescription("");
+    setCompleted(false);
+    setStatus("todo");
+  };
+
+  const [title, setTitle] = useState<string>(task?.title || "");
+  const [description, setDescription] = useState<string>(
+    task?.description || ""
+  );
+  const [completed, setCompleted] = useState<boolean>(task?.completed || false);
+  const [status, setStatus] = useState<string>(task?.status || "todo");
+
+  useEffect(() => {
+    setTitle(task?.title || "");
+    setDescription(task?.description || "");
+    setCompleted(task?.completed || false);
+    setStatus(task?.status || "todo");
+  }, [task]);
+
   return (
-    <form action="">
+    <form onSubmit={handleSubmit}>
+      <input type="hidden" name="id" value={task?.id || ""} />
       <div className="mb-3">
-        <label className="form-label" htmlFor="task">
+        <label className="form-label" htmlFor="title">
           Title
         </label>
         <input
           type="text"
-          name="task"
-          id="task"
+          name="title"
+          id="title"
           className="form-control"
-          value={task?.title}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description <small>(optional)</small>
         </label>
-        <textarea name="description" id="description" className="form-control" rows={5}>{task?.description}</textarea>
+        <textarea
+          name="description"
+          id="description"
+          className="form-control"
+          rows={5}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
       </div>
       <div className="form-check mb-3">
         <input
@@ -38,7 +75,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
           name="completed"
           id="completed"
           className="form-check-input"
-          checked={task?.completed || false}
+          checked={completed}
+          onChange={(e) => setCompleted(e.target.checked)}
         />
         <label className="form-check-label" htmlFor="completed">
           Completed
@@ -48,15 +86,22 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
         <label htmlFor="status" className="form-label">
           Status
         </label>
-        <select className="form-select" aria-label="Status">
-          <option selected>Todo</option>
-          <option value="1">Backlog</option>
-          <option value="2">Waiting</option>
-          <option value="3">Review</option>
-          <option value="4">Done</option>
+        <select
+          className="form-select"
+          aria-label="Status"
+          name="status"
+          id="status"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option value={"todo"}>Todo</option>
+          <option value={"backlog"}>Backlog</option>
+          <option value={"waiting"}>Waiting</option>
+          <option value={"review"}>Review</option>
+          <option value={"done"}>Done</option>
         </select>
       </div>
-      <button className="btn btn-primary">Add Task</button>
+      <button className="btn btn-primary">Save Quest</button>
     </form>
   );
 };

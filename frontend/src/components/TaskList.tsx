@@ -1,29 +1,23 @@
-import React from 'react';
-import TaskEntry from './TaskEntry';
-
-interface Task {
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import React from "react";
+import TaskEntry from "./TaskEntry";
 
 interface TaskListProps {
   tasks: Task[];
+  onSelectTask: (task: Task) => void;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
+const TaskList: React.FC<TaskListProps> = ({ tasks, onSelectTask }) => {
   return (
     <ul className="task-list">
-      {tasks.map(task => (
+      {tasks.map((task) => (
         <TaskEntry
           key={task.id}
-          id={task.id}
-          task={task.title}
-          completed={task.completed}
+          task={task}
+          onSelectTask={() => onSelectTask(task)}
         />
       ))}
     </ul>
   );
-}
+};
 
 export default TaskList;
