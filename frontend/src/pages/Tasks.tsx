@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import tasksFromJSON from "../data/mock-tasks.json";
-import TaskList from "../components/TaskList";
-import TaskForm from "../components/TaskForm";
+import TaskList from "../components/Task/TaskList";
+import TaskForm from "../components/Task/TaskForm";
 
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksFromJSON);

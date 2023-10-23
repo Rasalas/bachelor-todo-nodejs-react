@@ -5,3 +5,8 @@ declare interface Task {
     completed: boolean;
     status?: string;
 }
+
+declare interface Project {
+    id: number;
+    name: string;
+}
