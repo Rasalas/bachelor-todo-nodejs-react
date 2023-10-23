@@ -4,6 +4,7 @@ import "../App.css";
 import tasksFromJSON from "../data/mock-tasks.json";
 import TaskList from "../components/Task/TaskList";
 import TaskForm from "../components/Task/TaskForm";
+import Layout from "../components/Layout/Layout";
 
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksFromJSON);
@@ -29,29 +30,31 @@ const Tasks: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <header className="col-md-12 mt-4">
-            <h1>Quest Log</h1>
-          </header>
-        </div>
-        <div className="col-md-6">
-          <div className="row">
-            <div className="col-md-12 ">
-              <TaskList tasks={tasks} onSelectTask={handleTaskSelection} />
+    <Layout>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <header className="col-md-12 mt-4">
+              <h1>Quest Log</h1>
+            </header>
+          </div>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-12 ">
+                <TaskList tasks={tasks} onSelectTask={handleTaskSelection} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <TaskForm
-            task={selectedTask}
-            addTask={addTask}
-            updateTask={updateTask}
-          />
+          <div className="col-md-6">
+            <TaskForm
+              task={selectedTask}
+              addTask={addTask}
+              updateTask={updateTask}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

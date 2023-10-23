@@ -4,6 +4,7 @@ import "../App.css";
 import projectsFromJSON from "../data/mock-projects.json";
 import ProjectList from "../components/Project/ProjectList";
 import ProjectForm from "../components/Project/ProjectForm";
+import Layout from "../components/Layout/Layout";
 
 const Projects: React.FC = () => {
   const [projects, setProject] = useState<Project[]>(projectsFromJSON);
@@ -29,29 +30,34 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <header className="col-md-12 mt-4">
-            <h1>Projects</h1>
-          </header>
-        </div>
-        <div className="col-md-6">
-          <div className="row">
-            <div className="col-md-12 ">
-              <ProjectList projects={projects} onSelectProject={handleProjectSelection} />
+    <Layout>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <header className="col-md-12 mt-4">
+              <h1>Projects</h1>
+            </header>
+          </div>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-12 ">
+                <ProjectList
+                  projects={projects}
+                  onSelectProject={handleProjectSelection}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <ProjectForm
-            project={selectedProject}
-            addProject={addProject}
-            updateProject={updateProject}
-          />
+          <div className="col-md-6">
+            <ProjectForm
+              project={selectedProject}
+              addProject={addProject}
+              updateProject={updateProject}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
