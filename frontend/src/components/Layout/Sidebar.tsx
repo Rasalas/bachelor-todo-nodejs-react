@@ -3,8 +3,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "./Sidebar.css";
 import * as Bootstrap from 'bootstrap';
 import questlogLogo from "../../assets/questlog-logo.svg";
-import { Link, NavLink, NavLinkProps} from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 
+interface NavLinkRenderProps {
+    isActive: boolean;
+  }
 
 const Sidebar: React.FC = () => {
     useEffect(() => {
@@ -20,9 +23,9 @@ const Sidebar: React.FC = () => {
         };
       }, []);
     
-      const handleActiveNavLink = (isActive:NavLinkProps) => {
+      const handleActiveNavLink = ({ isActive }: NavLinkRenderProps): string => {
         return isActive ? 'nav-link active' : 'nav-link text-white';
-      }
+      };
     
   return (
     <div
@@ -42,7 +45,7 @@ const Sidebar: React.FC = () => {
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item">
-          <NavLink to="/tasks" className={(isActive) => handleActiveNavLink(isActive)}>
+          <NavLink to="/tasks" className={handleActiveNavLink}>
             <svg className="bi me-2" width="16" height="16">
               <use href="/tasks"></use>
             </svg>
@@ -50,7 +53,7 @@ const Sidebar: React.FC = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/projects" className={(isActive) => handleActiveNavLink(isActive)}>
+          <NavLink to="/projects" className={handleActiveNavLink}>
             <svg className="bi me-2" width="16" height="16">
               <use href="/projects"></use>
             </svg>
