@@ -1,0 +1,44 @@
+[
+    {
+        "model": "TaskStatus",
+        "data": {
+            "name": "Backlog",
+            "key": "backlog"
+        }
+    },
+    {
+        "model": "TaskStatus",
+        "data": {
+            "name": "Waiting",
+            "key": "waiting"
+        }
+    },
+    {
+        "model": "TaskStatus",
+        "data": {
+            "name": "TODO",
+            "key": "todo"
+        }
+    },
+    {
+        "model": "TaskStatus",
+        "data": {
+            "name": "In Review",
+            "key": "review"
+        }
+    },
+    {
+        "model": "TaskStatus",
+        "data": {
+            "name": "Done",
+            "key": "done"
+        }
+    },
+    {
+        "model": "TaskStatus",
+        "data": {
+            "name": "Cancelled",
+            "key": "cancelled"
+        }
+    }
+]

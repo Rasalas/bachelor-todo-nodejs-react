@@ -1,0 +1,14 @@
+[
+    {
+        "model": "Project",
+        "data": {
+            "name": "Mock Project 1"
+        }
+    },
+    {
+        "model": "Project",
+        "data": {
+            "name": "Mock Project 2"
+        }
+    }
+]

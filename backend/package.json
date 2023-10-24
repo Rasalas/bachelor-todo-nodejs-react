@@ -4,18 +4,23 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon app.ts"
+    "start": "nodemon app.ts",
+    "load-fixtures": "npx ts-node fixtures/init.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/sequelize-fixtures": "^0.6.5",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mysql2": "^3.6.2",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "sequelize-fixtures": "^1.2.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.15",
     "@types/express": "^4.17.20",
     "@types/node": "^20.8.7",
     "nodemon": "^3.0.1",

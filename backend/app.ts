@@ -11,12 +11,20 @@ import TaskStatus from './models/task-status';
 import TaskActivity from './models/task-activity';
 import TaskActivityType from './models/task-activity-type';
 import sequelize from './core/database';
+import cors from 'cors';
+
+
+import taskRoutes from './routes/tasks';
 
 dotenv.config();
 
-
 const app = express();
 const port = process.env.PORT || 3001;
+
+//app.use(express.json());
+app.use(cors());
+
+app.use('/api/v1/tasks',taskRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hallo vom Backend!');
@@ -32,10 +40,10 @@ Task.belongsToMany(TaskLabel, { through: TaskToTaskLabel, foreignKey: 'task_id' 
 TaskLabel.belongsToMany(Task, { through: TaskToTaskLabel, foreignKey: 'task_label_id' });
 
 TaskStatus.hasMany(Task, { foreignKey: 'status_id' });
-Task.belongsTo(TaskStatus, { foreignKey: 'status_id' });
+Task.belongsTo(TaskStatus, { foreignKey: 'status_id', as: 'status'});
 
 Task.belongsTo(Project, { foreignKey: 'project_id' });
-Project.hasMany(Task, { foreignKey: 'project_id' });
+Project.hasMany(Task, { foreignKey: 'project_id'});
 
 TaskActivity.belongsTo(Task, { foreignKey: 'task_id' });
 Task.hasMany(TaskActivity, { foreignKey: 'task_id' });

@@ -1,0 +1,102 @@
+[
+    {
+        "model": "Task",
+        "data": {
+            "title": "Database Schema Design",
+            "description": "Design the initial database schema for the project.",
+            "complexity": 4,
+            "project_id": 1,
+            "status_id": 1
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "API Endpoint Implementation",
+            "description": "Implement the RESTful API endpoints for managing tasks.",
+            "complexity": 5,
+            "project_id": 1,
+            "status_id": 2
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "Frontend Layout Design",
+            "description": "Design the layout for the frontend using a responsive framework.",
+            "complexity": 3,
+            "project_id": 2,
+            "status_id": 3
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "User Authentication",
+            "description": "Implement user authentication and authorization.",
+            "complexity": 5,
+            "project_id": 2,
+            "status_id": 4
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "Testing Suite Setup",
+            "description": "Setup a testing suite for backend services.",
+            "complexity": 4,
+            "project_id": 1,
+            "status_id": 5
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "Performance Optimization",
+            "description": "Optimize the performance of the backend by analyzing and improving database queries.",
+            "complexity": 5,
+            "project_id": 2,
+            "status_id": 6
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "Error Handling",
+            "description": "Implement robust error handling across the application.",
+            "complexity": 3,
+            "project_id": 1,
+            "status_id": 4
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "Documentation",
+            "description": "Create comprehensive documentation for the API.",
+            "complexity": 2,
+            "project_id": 2,
+            "status_id": 1
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "User Feedback",
+            "description": "Collect and analyze user feedback for the next iteration.",
+            "complexity": 3,
+            "project_id": 1,
+            "status_id": 2
+        }
+    },
+    {
+        "model": "Task",
+        "data": {
+            "title": "Refactoring",
+            "description": "Refactor the codebase to ensure maintainability.",
+            "complexity": 4,
+            "project_id": 2,
+            "status_id": 3
+        }
+    }
+]
