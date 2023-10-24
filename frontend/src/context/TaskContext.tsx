@@ -26,7 +26,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
   useEffect(() => {
     fetch(`${config.api.url}/tasks`)
       .then((response) => response.json())
-      .then((data) => setTasks(data))
+      .then((data) => setTasks(data.tasks))
       .catch((error) => console.error(error));
   }, []);
 

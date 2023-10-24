@@ -12,6 +12,10 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const task = Object.fromEntries(formData.entries()) as unknown as Task;
+
+    const taskStatus = { key: status, id: 0, name: ''}; 
+    task.status = taskStatus; 
+
     if (task.id) {
       task.id = Number(task.id);
       updateTask(task);
@@ -23,7 +27,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
     setId(undefined);
     setTitle("");
     setDescription("");
-    setCompleted(false);
     setStatus("todo");
   };
   const [id, setId] = useState<number | undefined>(task?.id || undefined);
@@ -31,15 +34,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
   const [description, setDescription] = useState<string>(
     task?.description || ""
   );
-  const [completed, setCompleted] = useState<boolean>(task?.completed || false);
-  const [status, setStatus] = useState<string>(task?.status || "todo");
+  const [status, setStatus] = useState<string>(task?.status.key || "todo");
 
   useEffect(() => {
     setId(task?.id || undefined);
     setTitle(task?.title || "");
     setDescription(task?.description || "");
-    setCompleted(task?.completed || false);
-    setStatus(task?.status || "todo");
+    setStatus(task?.status.key || "todo");
   }, [task]);
 
   return (
@@ -70,19 +71,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-      </div>
-      <div className="form-check mb-3">
-        <input
-          type="checkbox"
-          name="completed"
-          id="completed"
-          className="form-check-input"
-          checked={completed}
-          onChange={(e) => setCompleted(e.target.checked)}
-        />
-        <label className="form-check-label" htmlFor="completed">
-          Completed
-        </label>
       </div>
       <div className="mb-3">
         <label htmlFor="status" className="form-label">
