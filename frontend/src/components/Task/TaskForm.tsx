@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { TaskContext } from "../../context/TaskContext";
 
 interface TaskFormProps {
   task?: Task | null;
-  addTask: (task: Task) => void;
-  updateTask: (task: Task) => void;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ task, addTask, updateTask }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
+  const { createTask, updateTask } = useContext(TaskContext);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -17,7 +17,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, addTask, updateTask }) => {
       updateTask(task);
     } else {
       task.id = task.id || Date.now();
-      addTask(task);
+      createTask(task);
     }
     
     setId(undefined);

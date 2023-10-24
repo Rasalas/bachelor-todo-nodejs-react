@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import TaskEntry from "./TaskEntry";
+import { TaskContext } from "../../context/TaskContext";
 
 interface TaskListProps {
-  tasks: Task[];
   onSelectTask: (task: Task) => void;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks, onSelectTask }) => {
+const TaskList: React.FC<TaskListProps> = ({onSelectTask }) => {
+  const {tasks} = useContext(TaskContext);
   return (
     <ul className="task-list">
       {tasks.map((task) => (
