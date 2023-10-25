@@ -55,7 +55,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 sequelize
-  // .sync({ force: true }) // resets the database
+  //.sync({ force: true }) // resets the database
   .sync()
   .then(() => {
     console.log('Datenbank bereit!');

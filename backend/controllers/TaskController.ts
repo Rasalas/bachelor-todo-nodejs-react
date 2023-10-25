@@ -8,6 +8,10 @@ interface ITaskStatus {
     key: string;
 }
 
+interface ITask {
+    id: number;
+}
+
 class TaskController {
     public async index(req: Request, res: Response) {
         try {
@@ -29,7 +33,16 @@ class TaskController {
 
     public async show(req: Request, res: Response) {
         try {
-            const task = await Task.findByPk(req.params.id);
+            const task = await Task.findByPk(req.params.id, {
+                include: [{
+                    model: TaskStatus,
+                    as: 'status',
+                    attributes: ['key'],
+                }],
+                attributes: {
+                    exclude: ['status_id', 'project_id']
+                }
+            });
             if (task) {
                 res.json({ task: task });
             } else {
@@ -42,8 +55,24 @@ class TaskController {
 
     public async create(req: Request, res: Response) {
         try {
-            const task = await Task.create(req.body);
-            res.status(201).json(task);
+            if (req.body.id) req.body.id = null;
+
+            const task = await Task.create(req.body) as unknown as ITask;
+            if ('id' in task) {
+                const newTask = await Task.findByPk(task.id, {
+                    include: [{
+                        model: TaskStatus,
+                        as: 'status',
+                        attributes: ['key'],
+                    }],
+                    attributes: {
+                        exclude: ['status_id', 'project_id']
+                    }
+                });
+                res.status(201).json(newTask);
+            }else{
+                res.status(500).send('Error creating task');
+            }
         } catch (error: any) {
             res.status(500).send(error.message);
         }
@@ -58,8 +87,8 @@ class TaskController {
                 const taskStatus = await TaskStatus.findOne({ where: { key: req.body.status.key } }) as unknown as ITaskStatus;
 
                 if (taskStatus) {
-                    await task.update({ status_id: taskStatus.id, ...req.body }) ;
-    
+                    await task.update({ status_id: taskStatus.id, ...req.body });
+
                     const updatedTask = await Task.findByPk(req.params.id, {
                         include: [{
                             model: TaskStatus,
@@ -70,7 +99,7 @@ class TaskController {
                             exclude: ['status_id', 'project_id']
                         }
                     });
-                    
+
                     res.json(updatedTask);
                 } else {
                     res.status(404).send('Task status not found');
@@ -82,7 +111,7 @@ class TaskController {
             res.status(500).send(error.message);
         }
     }
-    
+
 
     public async delete(req: Request, res: Response) {
         try {
