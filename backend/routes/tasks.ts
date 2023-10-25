@@ -1,7 +1,5 @@
-// Dateipfad: routes/routes.ts
 import { Router } from 'express';
 import TaskController from '../controllers/TaskController';
-
 
 const router = Router();
 
