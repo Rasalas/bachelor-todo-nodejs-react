@@ -60,6 +60,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
   };
 
   const deleteTask = (taskId: number) => {
+    if(!window.confirm('Are you sure you want to delete this task?')) return;
     fetch(`${config.api.url}/tasks/${taskId}`, {
       method: "DELETE",
     })
