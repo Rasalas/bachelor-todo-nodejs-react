@@ -70,8 +70,6 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       .catch((error) => console.error("Error:", error));
   };
 
-  // ... andere Funktionen und Zustände ...
-
   return (
     <TaskContext.Provider value={{ tasks, createTask, updateTask, deleteTask }}>
       {children}

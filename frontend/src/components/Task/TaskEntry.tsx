@@ -8,7 +8,7 @@ interface TaskProps {
 const TaskEntry: React.FC<TaskProps> = ({ task, onSelectTask }) => {
   return (
     <li key={task.id} onClick={() => onSelectTask(task)}>
-      {task.status.key == 'done' ? "✅" : "❌"} {task.title}
+      {task.status?.key == 'done' ? "✅" : "❌"} {task.title}
     </li>
   );
 };

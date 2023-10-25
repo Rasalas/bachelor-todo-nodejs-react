@@ -13,8 +13,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
     const formData = new FormData(form);
     const task = Object.fromEntries(formData.entries()) as unknown as Task;
 
-    const taskStatus = { key: status, id: 0, name: ''}; 
-    task.status = taskStatus; 
+    task.status = { key: status }; 
 
     if (task.id) {
       task.id = Number(task.id);

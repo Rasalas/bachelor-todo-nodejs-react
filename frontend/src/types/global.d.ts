@@ -1,6 +1,4 @@
 declare interface TaskStatus {
-    id: number;
-    name: string;
     key: string;
 }
 

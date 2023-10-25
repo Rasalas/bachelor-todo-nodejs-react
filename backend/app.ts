@@ -21,14 +21,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-//app.use(express.json());
+app.use(express.json());
 app.use(cors());
-
-app.use('/api/v1/tasks',taskRoutes);
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hallo vom Backend!');
-});
 
 User.belongsToMany(Project, { through: UserToProject, foreignKey: 'user_id' });
 Project.belongsToMany(User, { through: UserToProject, foreignKey: 'project_id' });
@@ -53,6 +47,12 @@ User.hasMany(TaskActivity, { foreignKey: 'user_id' });
 
 TaskActivityType.hasMany(TaskActivity, { foreignKey: 'type_id' });
 TaskActivity.belongsTo(TaskActivityType, { foreignKey: 'type_id' });
+
+app.use('/api/v1/tasks',taskRoutes);
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hallo vom Backend!');
+});
 
 sequelize
   // .sync({ force: true }) // resets the database
