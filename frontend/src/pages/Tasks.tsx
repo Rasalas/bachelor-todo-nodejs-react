@@ -13,6 +13,9 @@ const Tasks: React.FC = () => {
   const handleTaskSelection = (task: Task) => {
     setSelectedTask(task);
   };
+  const handleNewButtonClick = () => {
+    setSelectedTask(null);
+  };
 
   return (
     <TaskProvider>
@@ -20,8 +23,14 @@ const Tasks: React.FC = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <header className="col-md-12 mt-4">
+              <header className="col-md-12 mt-4 d-flex justify-content-between align-items-center">
                 <h1>Quests</h1>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleNewButtonClick}
+                >
+                  + New
+                </button>
               </header>
             </div>
             <div className="col-md-6">
