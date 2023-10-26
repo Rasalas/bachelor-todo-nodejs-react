@@ -13,8 +13,11 @@ import TaskActivityType from './models/task-activity-type';
 import sequelize from './core/database';
 import cors from 'cors';
 
-
+/**
+ * Routes
+ */
 import taskRoutes from './routes/tasks';
+import projectRoutes from './routes/projects';
 
 dotenv.config();
 
@@ -49,6 +52,7 @@ TaskActivityType.hasMany(TaskActivity, { foreignKey: 'type_id' });
 TaskActivity.belongsTo(TaskActivityType, { foreignKey: 'type_id' });
 
 app.use('/api/v1/tasks',taskRoutes);
+app.use('/api/v1/projects',projectRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hallo vom Backend!');

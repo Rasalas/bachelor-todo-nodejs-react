@@ -70,7 +70,7 @@ class TaskController {
                     }
                 });
                 res.status(201).json(newTask);
-            }else{
+            } else {
                 res.status(500).send('Error creating task');
             }
         } catch (error: any) {
@@ -87,7 +87,8 @@ class TaskController {
                 const taskStatus = await TaskStatus.findOne({ where: { key: req.body.status.key } }) as unknown as ITaskStatus;
 
                 if (taskStatus) {
-                    await task.update({ status_id: taskStatus.id, ...req.body });
+                    req.body.status_id = taskStatus.id;
+                    await task.update(req.body, { fields: Object.keys(req.body) });
 
                     const updatedTask = await Task.findByPk(req.params.id, {
                         include: [{
