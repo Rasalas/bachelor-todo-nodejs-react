@@ -10,7 +10,6 @@ import { TaskProvider } from "../context/TaskContext";
 
 const Tasks: React.FC = () => {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
-
   const handleTaskSelection = (task: Task) => {
     setSelectedTask(task);
   };
@@ -33,9 +32,7 @@ const Tasks: React.FC = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <TaskForm
-                task={selectedTask}
-              />
+              <TaskForm task={selectedTask} />
             </div>
           </div>
         </div>

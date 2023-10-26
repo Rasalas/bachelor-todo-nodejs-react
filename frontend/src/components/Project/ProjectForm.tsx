@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ProjectContext } from "../../context/ProjectContext";
 
 interface ProjectFormProps {
   project?: Project | null;
-  addProject: (project: Project) => void;
-  updateProject: (project: Project) => void;
 }
 
-const ProjectForm: React.FC<ProjectFormProps> = ({ project, addProject, updateProject }) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ project }) => {
+  const { createProject, updateProject } = useContext(ProjectContext);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const project = Object.fromEntries(formData.entries()) as unknown as Project;
+    const project = Object.fromEntries(
+      formData.entries()
+    ) as unknown as Project;
+
     if (project.id) {
       project.id = Number(project.id);
       updateProject(project);
     } else {
       project.id = project.id || Date.now();
-      addProject(project);
+      createProject(project);
     }
-    
+
     setId(undefined);
     setName("");
   };
+
   const [id, setId] = useState<number | undefined>(project?.id || undefined);
   const [name, setName] = useState<string>(project?.name || "");
+
   useEffect(() => {
     setId(project?.id || undefined);
     setName(project?.name || "");
@@ -46,7 +52,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, addProject, updatePr
           onChange={(e) => setName(e.target.value)}
         />
       </div>
-      <button className="btn btn-primary">Save Quest</button>
+      <button className="btn btn-primary">Save Project</button>
     </form>
   );
 };

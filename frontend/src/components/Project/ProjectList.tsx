@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProjectEntry from "./ProjectEntry";
+import { ProjectContext } from "../../context/ProjectContext";
 
 interface ProjectListProps {
-  projects: Project[];
   onSelectProject: (project: Project) => void;
 }
 
-const ProjectList: React.FC<ProjectListProps> = ({ projects, onSelectProject }) => {
+const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject }) => {
+  const { projects } = useContext(ProjectContext);
   return (
     <ul className="project-list">
       {projects.map((project) => (

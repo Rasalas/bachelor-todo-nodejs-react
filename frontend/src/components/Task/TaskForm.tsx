@@ -9,11 +9,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
   const { createTask, updateTask } = useContext(TaskContext);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const form = e.currentTarget;
     const formData = new FormData(form);
     const task = Object.fromEntries(formData.entries()) as unknown as Task;
 
-    task.status = { key: status }; 
+    task.status = { key: status };
 
     if (task.id) {
       task.id = Number(task.id);
@@ -22,12 +23,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
       task.id = task.id || Date.now();
       createTask(task);
     }
-    
+
     setId(undefined);
     setTitle("");
     setDescription("");
     setStatus("todo");
   };
+
   const [id, setId] = useState<number | undefined>(task?.id || undefined);
   const [title, setTitle] = useState<string>(task?.title || "");
   const [description, setDescription] = useState<string>(
