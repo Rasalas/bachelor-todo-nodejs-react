@@ -12,26 +12,11 @@ interface TaskProps {
 const TaskEntry: React.FC<TaskProps> = ({ task, onSelectTask }) => {
   const { deleteTask } = useContext(TaskContext);
 
-  const generateClassNames = () => {
-    let classes = 'me-2';  // me-2 class is always included
-    if (task.status.color) {
-      classes += ` text-${task.status.color}`;
-    }
-    return classes;
-  };
-
-  const icon = task.status.icon && icons.hasOwnProperty(task.status.icon)
-               ? icons[task.status.icon as keyof typeof icons]
-               : undefined;
-
   return (
     <li key={task.id} onClick={() => onSelectTask(task)}>
-      {task.status.icon && icons[task.status.icon] ? (
-        <FontAwesomeIcon className={generateClassNames()} icon={icons[task.status.icon]} />
-      ) : null}
       {task.title}
       <button
-        className="btn float-end"
+        className="btn float-end py-0"
         onClick={(e) => {
           e.stopPropagation();
           deleteTask(task.id);

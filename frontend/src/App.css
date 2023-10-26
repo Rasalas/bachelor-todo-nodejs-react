@@ -18,25 +18,39 @@
   }
 }
 
-ul.task-list,
+.task-list ul,
 ul.project-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-ul.task-list li,
+.task-list ul li,
 ul.project-list li {
   padding: 0.75rem 0;
-  border-bottom: 1px solid #ccc;
+  border: 1px solid #d8deea;
+  border-radius: 13px;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
 }
 
-ul.task-list li:last-child,
+.task-list ul li:hover,
+ul.project-list li:hover {
+  background-color: #d8deea;
+  cursor: pointer;
+}
+
+.task-list__title{
+  background-color: #ebeff8;
+  padding: 0.75rem 1rem;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.task-list ul li:last-child,
 ul.project-list li:last-child {
-  border-bottom: 1px solid #ccc;
 }
 
-ul.task-list li:last-child:not(:first-child),
+.task-list ul li:last-child:not(:first-child),
 ul.project-list li:last-child:not(:first-child) {
-  border-bottom: none;
 }

@@ -1,4 +1,4 @@
-import { faBan, faHourglassHalf, faHammer, faMagnifyingGlass, faCheck, faWarehouse, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faHourglassHalf, faHammer, faMagnifyingGlass, faCheck, faWarehouse, faQuestion, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 const icons: { [key: string]: IconDefinition } = {
   "magnifying-glass": faMagnifyingGlass,
@@ -6,7 +6,8 @@ const icons: { [key: string]: IconDefinition } = {
   "hammer": faHammer,
   "check": faCheck,
   "warehouse": faWarehouse,
-  "ban": faBan
+  "ban": faBan,
+  "question": faQuestion,
 };
 
 export default icons;
