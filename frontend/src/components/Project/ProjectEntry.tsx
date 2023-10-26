@@ -15,7 +15,7 @@ const ProjectEntry: React.FC<ProjectProps> = ({ project, onSelectProject }) => {
     <li key={project.id} onClick={() => onSelectProject(project)}>
       {project.name}
       <button
-        className="btn float-end"
+        className="btn float-end py-0"
         onClick={(e) => {
           e.stopPropagation();
           deleteProject(project.id);
