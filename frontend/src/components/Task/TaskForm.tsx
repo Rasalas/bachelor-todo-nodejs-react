@@ -90,6 +90,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task }) => {
           <option value={"waiting"}>Waiting</option>
           <option value={"review"}>Review</option>
           <option value={"done"}>Done</option>
+          <option value={"cancelled"}>Cancelled</option>
         </select>
       </div>
       <button className="btn btn-primary">Save Quest</button>

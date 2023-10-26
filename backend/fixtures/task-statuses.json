@@ -3,42 +3,54 @@
         "model": "TaskStatus",
         "data": {
             "name": "Backlog",
-            "key": "backlog"
+            "key": "backlog",
+            "icon": "warehouse",
+            "color": "secondary"
         }
     },
     {
         "model": "TaskStatus",
         "data": {
             "name": "Waiting",
-            "key": "waiting"
+            "key": "waiting",
+            "icon": "hourglass-half",
+            "color": "info"
         }
     },
     {
         "model": "TaskStatus",
         "data": {
             "name": "TODO",
-            "key": "todo"
+            "key": "todo",
+            "icon": "hammer",
+            "color": "primary"
         }
     },
     {
         "model": "TaskStatus",
         "data": {
             "name": "In Review",
-            "key": "review"
+            "key": "review",
+            "icon": "magnifying-glass",
+            "color": "warning"
         }
     },
     {
         "model": "TaskStatus",
         "data": {
             "name": "Done",
-            "key": "done"
+            "key": "done",
+            "icon": "check",
+            "color": "success"
         }
     },
     {
         "model": "TaskStatus",
         "data": {
             "name": "Cancelled",
-            "key": "cancelled"
+            "key": "cancelled",
+            "icon": "ban",
+            "color": "danger"
         }
     }
 ]

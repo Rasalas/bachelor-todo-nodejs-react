@@ -16,6 +16,15 @@ const TaskStatus = sequelize.define("task_status", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    icon: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "secondary",
+    },
 });
 
 export default TaskStatus;

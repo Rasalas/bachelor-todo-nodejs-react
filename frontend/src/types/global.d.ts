@@ -1,5 +1,7 @@
 declare interface TaskStatus {
     key: string;
+    icon?: string;
+    color?: string;
 }
 
 declare interface Task {

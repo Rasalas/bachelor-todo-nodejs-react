@@ -8,6 +8,7 @@ interface TaskListProps {
 
 const TaskList: React.FC<TaskListProps> = ({onSelectTask }) => {
   const {tasks} = useContext(TaskContext);
+  console.log(tasks);
   return (
     <ul className="task-list">
       {tasks.map((task) => (

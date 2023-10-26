@@ -19,7 +19,7 @@ class TaskController {
                 include: [{
                     model: TaskStatus,
                     as: 'status',
-                    attributes: ['key'],
+                    attributes: ['key', 'icon', 'color'],
                 }],
                 attributes: {
                     exclude: ['status_id', 'project_id']
@@ -37,7 +37,7 @@ class TaskController {
                 include: [{
                     model: TaskStatus,
                     as: 'status',
-                    attributes: ['key'],
+                    attributes: ['key', 'icon', 'color'],
                 }],
                 attributes: {
                     exclude: ['status_id', 'project_id']
@@ -63,7 +63,7 @@ class TaskController {
                     include: [{
                         model: TaskStatus,
                         as: 'status',
-                        attributes: ['key'],
+                        attributes: ['key', 'icon', 'color'],
                     }],
                     attributes: {
                         exclude: ['status_id', 'project_id']
@@ -94,7 +94,7 @@ class TaskController {
                         include: [{
                             model: TaskStatus,
                             as: 'status',
-                            attributes: ['key'],
+                            attributes: ['key', 'icon', 'color'],
                         }],
                         attributes: {
                             exclude: ['status_id', 'project_id']
