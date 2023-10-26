@@ -16,8 +16,8 @@ interface TaskListProps {
 
 const STATUS_KEYS = {
   backlog: { name: "Backlog", icon: "warehouse", color: "secondary" },
-  todo: { name: "TODO", icon: "hammer", color: "primary" },
   waiting: { name: "Waiting", icon: "hourglass-half", color: "info" },
+  todo: { name: "TODO", icon: "hammer", color: "primary" },
   review: { name: "In Review", icon: "magnifying-glass", color: "warning" },
   done: { name: "Done", icon: "check", color: "success" },
   cancelled: { name: "Cancelled", icon: "ban", color: "danger" },
